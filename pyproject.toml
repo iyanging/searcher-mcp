@@ -1,0 +1,22 @@
+[project]
+name = "searcher-mcp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "camoufox",
+    "fastmcp>=2.13.0.2",
+    "lxml>=6.0.2",
+]
+
+[tool.uv.sources]
+camoufox = { git = "https://github.com/coryking/camoufox.git", subdirectory = "pythonlib", rev = "v142.0.1-fork.27" }
+
+[dependency-groups]
+dev = [
+    "commitizen>=4.9.1",
+    "prek>=0.2.13",
+    "ty>=0.0.1a25",
+    "types-lxml>=2025.8.25",
+]

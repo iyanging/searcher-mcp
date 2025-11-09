@@ -1,0 +1,52 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-merge-conflict
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.5
+    hooks:
+      - id: insert-license
+        types:
+          - python
+        args:
+          - --license-filepath
+          - LICENSE.txt
+          - --allow-past-years
+          - --use-current-year
+
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: v3.6.2
+    hooks:
+      - id: prettier
+        args:
+          - --write
+        files: \.(json|toml|yaml|yml)$
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: mixed-line-ending
+        args:
+          - --fix=lf
+      - id: trailing-whitespace
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.4
+    hooks:
+      - id: ruff-format
+      - id: ruff-check
+        args: [--fix]
+
+  - repo: local
+    hooks:
+      - id: ty-check
+        language: system
+        name: ty-check
+        entry: ty check
+        pass_filenames: false
